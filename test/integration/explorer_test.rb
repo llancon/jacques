@@ -29,6 +29,7 @@ class ExplorerTest < ActionDispatch::IntegrationTest
 
     assert_equal note.tags.first.name, json['tag']['name']
     assert_equal example_note(Note.first), json['tag']['notes'].first
+    # byebug
   end
 
 
@@ -40,7 +41,7 @@ class ExplorerTest < ActionDispatch::IntegrationTest
         tags:   "api, machine, first"
       }
     json = JSON.parse(response.body)
-
+        # puts json.inspect
     assert_equal "My created post", json['note']['title']
     assert_equal 11, Note.count
     assert_equal 3, json['note']['tags'].length
