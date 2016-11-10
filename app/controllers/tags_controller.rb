@@ -1,10 +1,11 @@
 class TagsController < ApplicationController
 
-
-
-
-
-  def tag_params
-    params.require(:name)
+  def show
+    @tag = Tag.find_by(name: params[:name])
+    render json: @tag, include: "notes.tags"
   end
+
+
+
+
 end
